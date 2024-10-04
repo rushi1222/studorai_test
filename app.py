@@ -18,6 +18,11 @@ logging.basicConfig(level=logging.INFO)
 # Instantiate the Async client for OpenAI
 client = AsyncOpenAI(api_key=os.getenv('OPENAI_API_KEY'))
 
+@app.route('/')
+async def home():
+    return "API is running"
+
+
 @app.route('/chat', methods=['POST'])
 async def chat():
     data = await request.get_json()
