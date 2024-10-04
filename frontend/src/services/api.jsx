@@ -1,6 +1,8 @@
 // frontend/src/services/api.js
 
-const API_URL = "http://localhost:5001";  // Backend API URL
+// const API_URL = "http://localhost:5001";  // Backend API URL
+const API_URL = "https://studoraibackend-f0cdbf9798a6.herokuapp.com";  // Use your Heroku backend URL
+
 
 // Function to send a chat message to the backend
 export const sendMessage = async (message) => {
