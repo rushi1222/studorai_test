@@ -13,22 +13,27 @@ app = cors(app, allow_origin="*")  # Allow CORS so React can interact with the A
 # Instantiate the Async client
 client = AsyncOpenAI(api_key=os.getenv('OPENAI_API_KEY'))
 
+# Simple root route to avoid 404 errors
+@app.route('/')
+async def index():
+    return "Backend is running!"
+
 # API route to handle AI chat requests
 @app.route('/chat', methods=['POST'])
 async def chat():
     data = await request.get_json()  # Get JSON data from React
     user_input = data.get("message")
-    
+
     try:
         # Use the OpenAI async client to get a response
         response = await client.chat.completions.create(
             model="gpt-4",
             messages=[{"role": "user", "content": user_input}]
         )
-        
+
         reply = response.choices[0].message.content.strip()
         return jsonify({"response": reply})  # Send the reply back to React
-    
+
     except Exception as e:
         return jsonify({"error": str(e)}), 500  # Handle errors gracefully
 
