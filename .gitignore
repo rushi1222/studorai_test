@@ -1,0 +1,23 @@
+# Ignore virtual environments
+myenv/
+.venv/
+
+# Ignore Python cache files
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Ignore .env file for environment variables
+.env
+
+# Ignore node_modules and build folder for React frontend
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+
+# Ignore editor/IDE specific files
+.vscode/
+.idea/
+
+# Other files you want to ignore (e.g., logs)
+*.log
