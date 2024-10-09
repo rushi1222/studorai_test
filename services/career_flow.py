@@ -59,15 +59,15 @@ def handle_college_planning3():
 
 def handle_college_planning4():
     logging.info("Handling scholarships and financial aid")
+    # alejnadra lives in newyork so she can consider cuny or suny schools as options in her neighborhood
     return [
-        # Makes sense. A lot of colleges have pre-med. Can I provide some additional options for you to consider? I’ll share the different admissions requirements and typical student profile of an admitted student so you can see what the different colleges are looking for Would you like help with that?"
-        {"role": "system", "content": "you are a friendly ai find out if she would like help with additional options for colleges with pre-med programs.without re-greeting her"},
-        {"role": "assistant", "content": "Makes sense. A lot of colleges have pre-med. Can I provide some additional options for you to consider? I’ll share the different admissions requirements and typical student profile of an admitted student so you can see what the different colleges are looking for Would you like help with that?"}
+        {"role": "system", "content": "you are a friendly ai find out if she would like to consider cuny or suny schools as options in her neighborhood.without re-greeting her"},
+        {"role": "assistant", "content": "Since you live in New York, you can consider CUNY or SUNY schools as options in your neighborhood. Would you like to explore these schools?"}
     ]
 
 def handle_scholarship1():
     # AI: "That’s perfectly fine! There are many scholarships available for students pursuing health sciences. I can help you search for scholarships and guide you through the application process. Would that be helpful?"
-
+    logging.info("handling_scholarship1")
     return [
         {"role": "system", "content": "you are a friendly ai find out if she would like help with searching for scholarships and guidance through the application process.without re-greeting her"},
         {"role": "assistant", "content": "That’s perfectly fine! There are many scholarships available for students pursuing health sciences. I can help you search for scholarships and guide you through the application process. Would that be helpful?"}
@@ -75,76 +75,47 @@ def handle_scholarship1():
 
 def handle_schorloship2():
     # Can't have this -- she;s undocumented, so she's not eligible -- her options are CUNY or SUNY because private universities are out of reach for her due to finances
-
+    logging.info("handling_scholarship2")
     return [
-        {"role": "system", "content": "you are a friendly ai shes undocumented and private universities are out of reach for her due to finances ask her if she has considered applying to cuny or suny schools.without re-greeting her"},
-        {"role": "assistant", "content": "I understand that you are undocumented and private universities are out of reach for you due to finances. Have you considered applying to CUNY or SUNY schools?"}
+        {"role": "system", "content": "you are a friendly ai shes undocumented and private universities are out of reach for her due to her family finances tell her cuny and suny are very good schools for her.without re-greeting her"},
+        {"role": "assistant", "content": "I understand that you are undocumented and private universities are out of reach for you due to finances. CUNY and SUNY are very good schools that offer excellent programs in health sciences. Would you like to explore these options further?"}
         ]
 
 def handle_roadmap1():
     # AI: "Now that you have a list of colleges you’re interested in, I’ll help you create a roadmap to get your profile to reflect more like the ones of the typically admitted candidates at these schools. We’ll focus on your high school courses, preparing for college applications, and finding internships, volunteering or other experiences that will help your profile stand out. Does that sound good?"
-
+    logging.info("handle_roadmap1")
     return [
         {"role": "system", "content": "you are a friendly ai find out if she would like help creating a roadmap to get her profile to reflect more like the ones of the typically admitted candidates at the schools she is interested in.without re-greeting her"},
         {"role": "assistant", "content": "Now that you have a list of colleges you’re interested in, I’ll help you create a roadmap to get your profile to reflect more like the ones of the typically admitted candidates at these schools. We’ll focus on your high school courses, preparing for college applications, and finding internships, volunteering or other experiences that will help your profile stand out. Does that sound good?"}
     ]
-
 def handle_roadmap2():
-    # Return the roadmap tasks in a structured format
+    # Return a shortened roadmap with 3 phases
+    logging.info("handle_roadmap2")
     return [
-        {"role": "system", "content": "You are a friendly AI helping Alejandra build a roadmap to improve her profile for Pre-med applications.without re-greeting her."},
-        {"role": "assistant", "content": 
-            "Great! I’ll include tasks like preparing for the SAT, finding internships, and applying for scholarships to keep you organized and ready for each step. Here's a personalized roadmap for you:"},
+        {"role": "system", "content": "You are a friendly AI helping Alejandra build a roadmap to improve her profile for Pre-med applications. Do not re-greet her."},
+        {"role": "assistant", "content": (
+            "Great! I’ll include key tasks like preparing for the SAT, finding internships, and applying for scholarships to keep you organized. Here's a streamlined roadmap for you:\n\n"
 
-        # Phase 1: High School Senior Year
-        {"role": "assistant", "content": 
-            "Phase 1: High School Senior Year\n"
-            "- Continue excelling in Biology, Chemistry, and Math.\n"
-            "- Take AP courses if available, particularly in Biology and Chemistry.\n"
-            "- SAT/ACT Prep: Schedule study sessions and aim for scores that align with Pre-med admission requirements.\n"
-            "- Target GPA: Keep GPA above 3.5."},
+            # Phase 1: High School Senior Year
+            "Phase 1: High School Senior Year:\n"
+            "- Focus on excelling in Biology, Chemistry, and Math.\n"
+            "- Prepare for the SAT/ACT and aim for competitive scores.\n"
+            "- Maintain a GPA of at least 3.5.\n"
+            "- Get involved in science-related extracurriculars like the Science Club.\n\n"
 
-        # Extracurricular Activities
-        {"role": "assistant", "content": 
-            "Extracurricular Activities:\n"
-            "- Join the Science Club and participate in health sciences-related projects.\n"
-            "- Volunteer at local hospitals or clinics.\n"
-            "- Explore summer internships in health organizations."},
+            # Phase 2: College Applications and Scholarships
+            "Phase 2: College Applications and Scholarships:\n"
+            "- Research and apply to Pre-med programs, including CUNY, SUNY, and other strong programs.\n"
+            "- Apply for scholarships related to health sciences and Pre-med.\n"
+            "- Request letters of recommendation from teachers.\n"
+            "- Write a strong personal statement for college applications.\n\n"
 
-        # College Planning
-        {"role": "assistant", "content": 
-            "College Planning:\n"
-            "- Research Pre-med programs at CUNY, SUNY, and other regional schools in NYC.\n"
-            "- Schedule college visits or virtual tours to get insight into campus life.\n"
-            "- Research backup schools with strong Pre-med programs and apply to them as well."},
+            # Phase 3: Preparing for College
+            "Phase 3: Preparing for College:\n"
+            "- Participate in internships or volunteer at health-related organizations over the summer.\n"
+            "- Attend college orientation and meet with advisors.\n"
+            "- Stay focused on preparing for a successful transition to Pre-med.\n\n"
 
-        # College Applications
-        {"role": "assistant", "content": 
-            "Start College Applications:\n"
-            "- Begin working on your Common App or Coalition App. Focus on essays that highlight your passion for biology and health sciences.\n"
-            "- Approach teachers for letters of recommendation."},
-
-        # Phase 2: Scholarships and Financial Aid
-        {"role": "assistant", "content": 
-            "Phase 2: Scholarships and Financial Aid:\n"
-            "- Research scholarships for health sciences, gather documents like personal statements and letters of recommendation.\n"
-            "- Explore FAFSA eligibility and apply for local grants for students pursuing health sciences."},
-
-        # Phase 3: Finalizing College Applications
-        {"role": "assistant", "content": 
-            "Phase 3: Finalizing College Applications:\n"
-            "- Review all applications and submit by December for regular decision deadlines.\n"
-            "- Ensure all scholarship applications are submitted on time.\n"
-            "- Follow up with colleges to track submission statuses."},
-
-        # Phase 4: Summer Before College
-        {"role": "assistant", "content": 
-            "Phase 4: Summer Before College:\n"
-            "- Participate in internships or volunteer at hospitals, research labs, or health organizations.\n"
-            "- Prepare for college by taking online courses or shadowing healthcare professionals.\n"
-            "- Register for college orientation programs to meet advisors and get acclimated."},
-
-        {"role": "assistant", "content": 
-            "I’ve created your personalized roadmap, Alejandra. You’re well on your way of pursuing pre-med! Keep me updated as you complete activities, and I’ll help with your next steps. We can check in every few weeks to track your progress."}
+            "This roadmap will keep you on track for Pre-med, Alejandra! Let me know if you need further help with any of these steps."
+        )}
     ]
-

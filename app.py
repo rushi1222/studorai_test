@@ -60,7 +60,7 @@ async def chat():
         response = await client.chat.completions.create(
             model="gpt-4",
             messages=prompt,
-            max_tokens=100,  # Adjust if needed
+            max_tokens=300,  # Adjust if needed
             temperature=0.5  # Adjust as needed
         )
 
